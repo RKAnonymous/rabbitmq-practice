@@ -1,6 +1,7 @@
 # rabbitmq-practice
 Simple Django REST Framework `Quotes/Likes` project and communicating them with Rabbit MQ message broker
 
+[![Python app test with Github Actions](https://github.com/RKAnonymous/rabbitmq-practice/actions/workflows/devops.yml/badge.svg)](https://github.com/RKAnonymous/rabbitmq-practice/actions/workflows/devops.yml)
 [![Python 3.8](https://img.shields.io/badge/python-3.8-blue.svg?logo=Python&logoColor=yellow)](https://www.python.org/downloads/release/python-360/)
 [![Django](https://img.shields.io/badge/Django-4.1.2-success.svg?style=flat&logo=Django&logoColor=success)](https://www.djangoproject.com/)
 [![DRF](https://img.shields.io/badge/DRF-3.14.0-red.svg?style=flat)](https://www.django-rest-framework.org/)
