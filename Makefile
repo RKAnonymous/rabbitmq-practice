@@ -4,10 +4,10 @@ install:
 		pip install -r requirements.txt
 format:
 	#format code
-	black Likes/*.py Quotes/*.py Likes/Likes/*.py Quotes/Quotes/*.py Likes/likes/*.py Quotes/quotes/*.py
+	black  Likes/*.py Quotes/*.py Likes/Likes/*.py Quotes/Quotes/*.py Likes/likes/*.py Quotes/quotes/*.py
 lint:
 	#flake8 or # pylint
-	pylint --disable=R,C Likes/*.py Quotes/*.py Likes/Likes/*.py Quotes/Quotes/*.py Likes/likes/*.py Quotes/quotes/*.py
+	pylint --disable=R,C --generated-members=objects --allow-global-unused-variables=y Likes/*.py Quotes/*.py Likes/Likes/*.py Quotes/Quotes/*.py Likes/likes/*.py Quotes/quotes/*.py
 test:
 	#test
 	python Quotes/manage.py test

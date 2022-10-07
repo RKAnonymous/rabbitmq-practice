@@ -1,3 +1,4 @@
+from xml.dom import NotFoundErr
 from django.http import Http404
 from django.contrib.auth.models import User
 from rest_framework import viewsets, status
@@ -54,11 +55,12 @@ class UserAPIView(APIView):
 class UserDetailAPIView(APIView):
     def get_user(self, pk):
         try:
-            User.objects.get(pk=pk)
-        except User.DoesNotExist:
-            raise Http404
+            user = User.objects.get(pk=pk)
+            return user
+        except NotFoundErr as exc:
+            raise Http404 from exc
 
-    def get(self, request, pk, format=None):
+    def get(self, request, pk):
         user = self.get_user(pk)
         serializer = UserSerializer(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
