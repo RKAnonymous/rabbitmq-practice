@@ -5,10 +5,10 @@ from .models import *
 class QuoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Quote
-        fields = '__all__'
+        fields = "__all__"
 
 
 class QuoteUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuoteUser
-        fields = '__all__'
+        fields = "__all__"

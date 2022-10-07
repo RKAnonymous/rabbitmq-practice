@@ -1,12 +1,10 @@
 from django.http import Http404
-from django.shortcuts import render
 from django.contrib.auth.models import User
-import random
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import *
-from .serializers import *
+from .models import Quote
+from .serializers import QuoteSerializer, UserSerializer
 from .producer import publish
 
 
@@ -21,7 +19,7 @@ class QuoteViewset(viewsets.ViewSet):
         serializer = QuoteSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        publish('quote_created', serializer.data)
+        publish("quote_created", serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     def retrieve(self, request, pk=None):
@@ -34,15 +32,15 @@ class QuoteViewset(viewsets.ViewSet):
         serializer = QuoteSerializer(instance=product, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        publish('quote_updated', serializer.data)
+        publish("quote_updated", serializer.data)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def destroy(self, request, pk=None):
         product = Quote.objects.get(pk=pk)
         product.delete()
-        publish('quote_deleted', pk)
-        
-        return Response('Quote deleted')
+        publish("quote_deleted", pk)
+
+        return Response("Quote deleted")
 
 
 class UserAPIView(APIView):
@@ -59,6 +57,7 @@ class UserDetailAPIView(APIView):
             User.objects.get(pk=pk)
         except User.DoesNotExist:
             raise Http404
+
     def get(self, request, pk, format=None):
         user = self.get_user(pk)
         serializer = UserSerializer(user)

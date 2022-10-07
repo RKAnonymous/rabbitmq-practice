@@ -6,13 +6,12 @@ class Quote(models.Model):
     id = models.IntegerField(unique=True, primary_key=True)
     title = models.CharField(max_length=200)
 
-
     def __str__(self):
         return self.title
 
-        
+
 class QuoteUser(models.Model):
-    user_id = models.IntegerField( blank=True)
+    user_id = models.IntegerField(blank=True)
     quote_id = models.IntegerField(unique=True, blank=True)
 
     def __str__(self):

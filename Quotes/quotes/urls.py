@@ -5,11 +5,11 @@ from . import views
 
 
 router = DefaultRouter()
-router.register('quotes', views.QuoteViewset, basename='quotes')
+router.register("quotes", views.QuoteViewset, basename="quotes")
 
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('users', views.UserAPIView.as_view(), name='users'),
-    path('users/<int:pk>/', views.UserDetailAPIView.as_view(),name='user-details')
+    path("", include(router.urls)),
+    path("users", views.UserAPIView.as_view(), name="users"),
+    path("users/<int:pk>/", views.UserDetailAPIView.as_view(), name="user-details"),
 ]
